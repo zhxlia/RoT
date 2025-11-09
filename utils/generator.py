@@ -45,14 +45,14 @@ class GPTOpenAIGenerator(object):
         }
 
     def generate_single(self, packed_data: List[tuple]) -> List[Tuple[str, float]]:
-        openai.api_key = "sk-xMvkJLDPJKJHwrTtCa2f975d4bAf47C694Fb11770c57Cc96"
-        openai.api_base = "https://api.xiaoai.plus/v1"
+        openai.api_key = ""
+        openai.api_base = ""
 
         sentence, engine, config = packed_data
         while True:
             try:
                 response = openai.ChatCompletion.create(
-                    model="gpt-3.5-turbo-1106",
+                    model="",
                     messages=[{"role": "user", "content": sentence}],
                     **config
                 )
