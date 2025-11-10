@@ -178,23 +178,6 @@ def evaluate(pred: Union[List[str], str], answer: List[str], file_path: str) -> 
         return scores['rougeL'].fmeasure
     
 
-def extract_subtable(table: List[List[str]], cols: List[str], rows: List[str]):
-    new_table = []
-    if len(cols) == 0:
-        cols = ["*"]
-    if len(rows) == 0:
-        rows = ["*"]
-    if isinstance(cols[0], list):
-        cols = cols[0]
-    if isinstance(rows[0], list):
-        rows = rows[0]
-    for ti, t in enumerate(table):
-        if str(ti) in rows or "*" in rows:
-            new_table.append([t[ci] for ci, c in enumerate(t) if str(ci) in cols or "*" in cols])
-    if len(new_table) == 0 or len(new_table[0]) == 0:
-        new_table = table
-    return new_table
-
 def pack_path(path: str, shot_num: int) -> str:
     return path.format(shot_num=str(shot_num))
 
